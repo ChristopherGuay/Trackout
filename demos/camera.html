@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>PoseNet - Camera Feed Demo</title>
+    <title>Trackout - Squat Evaluation Demo</title>
     <style>
     .footer {
         position: fixed;
@@ -42,12 +42,17 @@
         display: none;
         ">
         </video>
-        <canvas id="output" />
+        <div align="center">
+            <canvas id="output" />
+        </div>
     </div>
     <div class="footer">
         <div class="footer-text">
             <p>
-                PoseNet runs with either a <strong>single-pose</strong> or <strong>multi-pose</strong> detection algorithm. The single person pose detector is faster and more accurate but requires only one subject present in the image.
+                Trackout runs using PoseNet's trained TensorFlow machine learning model.
+                <br>This version evaluates the subject's squat by judging if the angle between their ankles and knees is too great.
+                <br>
+                <br>PoseNet runs with either a <strong>single-pose</strong> or <strong>multi-pose</strong> detection algorithm. The single person pose detector is faster and more accurate but requires only one subject present in the image.
                 <br>
                 <br> The <strong>output stride</strong> and <strong>image scale factor</strong> have the largest effects on accuracy/speed. A <i>higher</i> output stride results in lower accuracy but higher speed. A <i>higher</i> image scale factor results in higher accuracy but lower speed.
             </p>
