@@ -19,6 +19,7 @@ import dat from 'dat.gui';
 import Stats from 'stats.js';
 
 import {drawBoundingBox, drawKeypoints, drawSkeleton, drawPoint} from './demo_util';
+import { atan, atan2 } from '@tensorflow/tfjs';
 
 const videoWidth = 600;
 const videoHeight = 500;
@@ -290,13 +291,47 @@ function detectPoseInRealTime(video, net) {
 
 /**
  * This is where the REAL magic happens
- */
+ * 
+ * 0: {score: 0.9990538954734802, part: "nose", position: {…}}
+ * 1: {score: 0.9991588592529297, part: "leftEye", position: {…}}
+ * 2: {score: 0.9997459053993225, part: "rightEye", position: {…}}
+ * 3: {score: 0.7221937775611877, part: "leftEar", position: {…}}
+ * 4: {score: 0.9498627185821533, part: "rightEar", position: {…}}
+ * 5: {score: 0.03203878179192543, part: "leftShoulder", position: {…}}
+ * 6: {score: 0.06942679733037949, part: "rightShoulder", position: {…}}
+ * 7: {score: 0.00198670057579875, part: "leftElbow", position: {…}}
+ * 8: {score: 0.0019565136171877384, part: "rightElbow", position: {…}}
+ * 9: {score: 0.0010236244415864348, part: "leftWrist", position: {…}}
+ * 10: {score: 0.000978565658442676, part: "rightWrist", position: {…}}
+ * 11: {score: 0.001000161631964147, part: "leftHip", position: {…}}
+ * 12: {score: 0.001757826772518456, part: "rightHip", position: {…}}
+ * 13: {score: 0.0005916851805523038, part: "leftKnee", position: {…}}
+ * 14: {score: 0.000900351267773658, part: "rightKnee", position: {…}}
+ * 15: {score: 0.0004360331513453275, part: "leftAnkle", position: {…}}
+ * 16: {score: 0.0002103205770254135, part: "rightAnkle", position: {…}}
+ **/
 function hackWest(keypoints, ctx) {
   //console.log(keypoints[0].position.x);
-  if (keypoints[0].position.x > 500){
-    console.log(keypoints);
+  //if (keypoints[0].position.x > 500){
+  //  console.log(keypoints);
+  //}
+
+  var xKnee, yKnee, xAnkle, yAnkle;
+  xKnee = keypoints[14].position.x;
+  yKnee = keypoints[14].position.y;
+  xAnkle = keypoints[16].position.x;
+  yAnkle = keypoints[16].position.y;
+
+  var angle = Math.atan((xKnee-xAnkle)/(yKnee-yAnkle));
+  if (Math.abs(angle) < (Math.PI/8)) {
+    drawPoint(ctx, 40, 560, 30, 'green');
   }
-  drawPoint(ctx, 40, 40, 30, 'green');
+  else {
+    drawPoint(ctx, 40, 560, 30, 'red');
+  }
+  drawPoint(ctx, 40, 560, 10, 'yellow');
+
+
 }
 
 
