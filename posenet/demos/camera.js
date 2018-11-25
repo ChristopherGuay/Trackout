@@ -18,7 +18,7 @@ import * as posenet from '@tensorflow-models/posenet';
 import dat from 'dat.gui';
 import Stats from 'stats.js';
 
-import {drawBoundingBox, drawKeypoints, drawSkeleton} from './demo_util';
+import {drawBoundingBox, drawKeypoints, drawSkeleton, drawPoint} from './demo_util';
 
 const videoWidth = 600;
 const videoHeight = 500;
@@ -264,6 +264,9 @@ function detectPoseInRealTime(video, net) {
     // scores
     poses.forEach(({score, keypoints}) => {
       if (score >= minPoseConfidence) {
+        
+        hackWest(keypoints, ctx);
+
         if (guiState.output.showPoints) {
           drawKeypoints(keypoints, minPartConfidence, ctx);
         }
@@ -284,6 +287,19 @@ function detectPoseInRealTime(video, net) {
 
   poseDetectionFrame();
 }
+
+/**
+ * This is where the REAL magic happens
+ */
+function hackWest(keypoints, ctx) {
+  //console.log(keypoints[0].position.x);
+  if (keypoints[0].position.x > 500){
+    console.log(keypoints);
+  }
+  drawPoint(ctx, 40, 40, 30, 'green');
+}
+
+
 
 /**
  * Kicks off the demo by loading the posenet model, finding and loading
