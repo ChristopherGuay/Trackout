@@ -2,7 +2,7 @@
 
 Trackout uses PoseNet's trained TensorFlow machine learning model to track joints and features in the human body. It then uses this to evaluate workout technique. (More information on PoseNet is contained below)
 
-#How to run the tracking software
+# How to run the tracking software
 On both Mac and Windows, you need to download the files and have node.js, yarn, and parcel-bundler installed.
 Windows: once the needed libraries and modules are installed just use "run.bat"
 Mac: in the terminal, navigate to the director ...\Trackout\demos then run "parcel camera.html --open" in the terminal
