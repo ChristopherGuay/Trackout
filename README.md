@@ -1,3 +1,7 @@
+# Workout assistance, tracking, and evaluation with Trackout
+
+Trackout uses PoseNet's trained TensorFlow machine learning model to track joints and features in the human body. It then uses this to evaluate workout technique.
+
 # Pose Detection in the Browser: PoseNet Model
 
 This package contains a standalone model called PoseNet, as well as some demos, for running real-time pose estimation in the browser using TensorFlow.js.
