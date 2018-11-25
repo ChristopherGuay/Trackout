@@ -5,7 +5,7 @@ Trackout uses PoseNet's trained TensorFlow machine learning model to track joint
 # How to run the tracking software
 On both Mac and Windows, you need to download the files and have node.js, yarn, and parcel-bundler installed.
 Windows: once the needed libraries and modules are installed just use "run.bat"
-Mac: in the terminal, navigate to the director ...\Trackout\demos then run "parcel camera.html --open" in the terminal
+Mac: in the terminal, navigate to the directory ...\Trackout\demos then run "parcel camera.html --open" in the terminal
 
 # Pose Detection in the Browser: PoseNet Model
 
