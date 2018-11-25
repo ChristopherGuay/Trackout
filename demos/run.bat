@@ -1,0 +1,1 @@
+parcel camera.html --open
